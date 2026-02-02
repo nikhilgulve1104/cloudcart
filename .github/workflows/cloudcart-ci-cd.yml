@@ -50,9 +50,9 @@ jobs:
     username: ubuntu
     key: ${{ secrets.EC2_SSH_KEY }}
     script: |
-  docker stop cloudcart-app || true
-  docker rm cloudcart-app || true
-  docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
-  docker run -d -p 5000:5000 --name cloudcart-app \
-    ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+      docker stop cloudcart-app || true
+      docker rm cloudcart-app || true
+      docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:${{ secrets.IMAGE_TAG }}
+      docker run -d -p 5000:5000 --name cloudcart-app ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:${{ secrets.IMAGE_TAG }}
+
 
